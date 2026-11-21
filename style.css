@@ -1,20 +1,201 @@
+:root {
+  --lime: #ccff00;
+  --ink: #0b0b0b;
+  --violet: #3a1fd6;
+  --pill-bg: #e9e9e9;
+  --gutter: clamp(16px, 2vw, 32px);
+  --font: "Inter Tight", system-ui, "Segoe UI", Arial, sans-serif;
+  --font-logo: "Unbounded", var(--font);
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: #ffffff;
-  color: #1a1a1a;
 }
 
-main {
-  padding: 16px;
-  text-align: center;
+body {
+  background: var(--lime);
+  color: var(--ink);
+  font-family: var(--font);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- Верхня панель ---------- */
+
+.topbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px var(--gutter) 0;
+}
+
+.logo {
+  font-family: var(--font-logo);
+  font-weight: 900;
+  font-size: clamp(22px, 2.2vw, 34px);
+  letter-spacing: -0.02em;
+  color: var(--violet);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(14px, 1.8vw, 28px);
+}
+
+.nav a,
+.menu-toggle {
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 6px 0;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* ---------- Перший екран ---------- */
+
+.hero {
+  min-height: calc(100svh - 50px);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
+}
+
+.hero__title {
+  width: 100%;
+  margin: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+}
+
+.hero__line {
+  display: block;
+  white-space: nowrap;
+  /* запасний розмір, поки JS не підігнав рядок під ширину */
+  font-size: 11vw;
+}
+
+.hero__line[data-fit] {
+  width: max-content;
+}
+
+.hero__line--heavy {
+  font-weight: 900;
+}
+
+.hero__line--light {
+  font-weight: 400;
+}
+
+.hero__line--last {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4vw;
+}
+
+.pill {
+  flex: none;
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: clamp(12px, 1.1vw, 16px);
+  letter-spacing: 0;
+  text-decoration: none;
+  background: var(--pill-bg);
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.55em 1.3em;
+  line-height: 1;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pill:hover {
+  background: var(--ink);
+  color: var(--lime);
+}
+
+/* ---------- Телефон ---------- */
+
+@media (max-width: 760px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: var(--gutter);
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--ink);
+    border-radius: 12px;
+  }
+
+  .nav a {
+    color: var(--lime);
+  }
+
+  .nav.is-open {
+    display: flex;
+  }
+
+  .hero {
+    min-height: calc(100svh - 44px);
+    align-items: flex-end;
+    padding-bottom: 32px;
+  }
+
+  .hero__line[data-fit] {
+    width: auto;
+    font-size: inherit;
+  }
+
+  .hero__part {
+    display: block;
+    width: max-content;
+    font-size: 18vw;
+  }
+
+  .hero__part:not(:last-child)::after {
+    content: "-";
+  }
+
+  .hero__line--last {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }

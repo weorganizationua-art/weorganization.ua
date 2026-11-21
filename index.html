@@ -5,13 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ГО «МИ»</title>
   <meta name="description" content="Сайт громадської молодіжної організації «МИ»">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;800;900&family=Unbounded:wght@900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="topbar">
+    <a class="logo" href="#">МИ</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav">Меню</button>
+    <nav id="nav" class="nav">
+      <a href="#about">Про нас</a>
+      <a href="#team">Команда</a>
+      <a href="#projects">Проєкти</a>
+      <a href="#events">Події</a>
+      <a href="#news">Новини</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
+  </header>
+
   <main>
-    <h1>ГО «МИ»</h1>
-    <p>Громадська молодіжна організація. Сайт у розробці.</p>
+    <section class="hero" aria-label="Громадська організація «МИ»">
+      <h1 class="hero__title">
+        <span class="hero__line hero__line--heavy" data-fit><span class="hero__part">Громад</span><span class="hero__part">ська</span></span>
+        <span class="hero__line hero__line--light" data-fit><span class="hero__part">Органі</span><span class="hero__part">зація</span></span>
+        <span class="hero__line hero__line--last">
+          <span class="hero__word hero__line--heavy">«МИ»</span>
+          <a class="pill" href="#about">Долучитися</a>
+        </span>
+      </h1>
+    </section>
   </main>
+
   <script src="script.js"></script>
 </body>
 </html>
